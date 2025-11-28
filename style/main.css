@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'pokemon classic';
+    src: url(../font/pokemon-classic.ttf);
+}
+:root {
+    --white: rgb(224, 224, 224);
+    --container-color: rgb(238, 64, 53);
+    --bottom-color: rgb(236, 236, 236);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+}
+body {
+    /* overflow-y: hidden; */
+    background: rgb(68, 68, 68);
+    background-attachment: fixed;
+    font-family: 'pokemon classic', Arial, Helvetica, sans-serif;
+    color: var(--white);
+}
+
+/* Background */
+
+.background {
+    width: 200vw;
+    height: 300vh;
+    position: fixed;
+    top: -100vh;
+    bottom: 0;
+    left: -50vw;
+    right: 0;
+    background: url(../img/background.svg);
+    background-size: 25%;
+    background-attachment: fixed;
+    transform: rotate(-30deg);
+    z-index: -100;
+}
+
+/* Title */
+
+.title-container {
+    background: var(--container-color) linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.2) 100%);
+}
+.title {
+    margin: 0;
+    padding: 2% 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.white-part {
+    height: 1.5rem;
+    background: var(--bottom-color) linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0,0,0,0.2) 100%);
+    border-radius: 50rem;
+    transform: translateY(50%)
+}
+
+/* Main */
+.main {
+    background-color: blue;
+    min-height: 83vh;
+}
