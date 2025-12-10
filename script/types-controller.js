@@ -1,6 +1,6 @@
 import { typeRelations } from "./type-relations.js"
 
-let typesOwned = [2, 4]
+let typesOwned = [1, 11]
 document.querySelector('.selector').addEventListener('click', (event) => {
     let type = event.target.closest('.type')
     if (type) {
@@ -17,5 +17,12 @@ function calculateTypesCovered () {
         console.log(typeRelations[typesOwned[i]].effectiveAgainst)
         typesCovered = typesCovered.concat(typeRelations[typesOwned[i]].effectiveAgainst)
     }
-    console.log(typesCovered)
+    typesCovered = typesCovered.filter((item, index) => typesCovered.indexOf(item) === index);
+    showTypesCovered(typesCovered)
+}
+
+function showTypesCovered (typesCovered) {
+    typesCovered.forEach(type => {
+        console.log(type)
+    })
 }
