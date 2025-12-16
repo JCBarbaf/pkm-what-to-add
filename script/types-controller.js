@@ -11,10 +11,10 @@ document.querySelector('.selector').addEventListener('click', (event) => {
             let index = typesOwned.indexOf(type.dataset.typeId)
             typesOwned.splice(index, 1)
         }
-        calculateTypesCovered()
+        let typesCovered = calculateTypesCovered()
+        showTypesCovered(typesCovered)
     }
 })
-
 
 function calculateTypesCovered () {
     let typesCovered = []
@@ -23,7 +23,7 @@ function calculateTypesCovered () {
         typesCovered = typesCovered.concat(typeRelations[typesOwned[i]].effectiveAgainst)
     }
     typesCovered = typesCovered.filter((item, index) => typesCovered.indexOf(item) === index);
-    showTypesCovered(typesCovered)
+    return typesCovered
 }
 
 function showTypesCovered (typesCovered) {
@@ -34,4 +34,11 @@ function showTypesCovered (typesCovered) {
         console.log(type)
         document.querySelector(`.covered .${type}`).classList.add('active')
     })
+}
+
+function calculateTypesToInclude() {
+    let typesToInclude = [];
+    let typesCovered = calculateTypesCovered()
+    console.log(typesCovered)
+    // let typesCovered = []
 }

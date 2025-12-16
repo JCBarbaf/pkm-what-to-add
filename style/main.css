@@ -78,6 +78,9 @@ body {
 
 .column-title-container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
 }
 
 .column-title {
@@ -86,6 +89,42 @@ body {
     padding: 1rem 5rem 1rem 1rem;
     font-size: 1rem;
     border-bottom: 0.25rem solid var(--white);
+}
+
+.button {
+    --border-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem;
+    background-color: rgb(104, 104, 104);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font: inherit;
+    font-size: 0.5rem;
+    cursor: pointer;
+    &:hover {
+        --border-color: var(--white);
+        scale: 1.1;
+    }
+}
+
+.recomend-types.button {
+    padding: 0.5rem;
+    background-color: var(--container-color);
+}
+
+.reset-icon {
+    --size: 1.5rem;
+    width: var(--size);
+    height: var(--size);
+    & * {
+        fill: var(--white);
+    }
+}
+
+.recomend-types-button {
+
 }
 
 .separator {
@@ -121,6 +160,13 @@ body {
     text-transform: capitalize;
     &.active {
         --color: var(--type-color);
+    }
+}
+
+.to-include .type {
+    visibility: hidden;
+    &.active {
+        visibility: visible;
     }
 }
 
