@@ -16,10 +16,21 @@ document.querySelector('.selector').addEventListener('click', (event) => {
     }
 })
 
+document.querySelector('.reset-types.button').addEventListener('click', (event) => {
+    console.log("reset types")
+    typesOwned = []
+    document.querySelectorAll('.types-container.selector .type').forEach(type => {
+      if (type.classList.contains('active')) {
+        type.classList.remove('active')
+      }  
+    })
+    let typesCovered = calculateTypesCovered()
+    showTypesCovered(typesCovered)
+})
+
 function calculateTypesCovered () {
     let typesCovered = []
     for (let i = 0; i < typesOwned.length; i++) {
-        console.log(typeRelations[typesOwned[i]].effectiveAgainst)
         typesCovered = typesCovered.concat(typeRelations[typesOwned[i]].effectiveAgainst)
     }
     typesCovered = typesCovered.filter((item, index) => typesCovered.indexOf(item) === index);
@@ -31,14 +42,12 @@ function showTypesCovered (typesCovered) {
         typeElement.classList.remove('active')
     })
     typesCovered.forEach(type => {
-        console.log(type)
         document.querySelector(`.covered .${type}`).classList.add('active')
     })
 }
 
 function calculateTypesToInclude() {
-    let typesToInclude = [];
+    let typesToInclude = []
     let typesCovered = calculateTypesCovered()
-    console.log(typesCovered)
     // let typesCovered = []
 }
