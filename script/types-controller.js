@@ -30,6 +30,7 @@ document.querySelector('.reset-types.button').addEventListener('click', (event) 
 })
 
 document.querySelector('.recomend-types.button').addEventListener('click', (event) => {
+    calculateTypesToInclude()
     modal.classList.add('active')
 })
 
@@ -60,5 +61,30 @@ function showTypesCovered (typesCovered) {
 function calculateTypesToInclude() {
     let typesToInclude = []
     let typesCovered = calculateTypesCovered()
-    // let typesCovered = []
+    console.log(typesCovered)
+    // if (!typesCovered.includes('electric')) {
+    //     typesToInclude.push('ground')
+    // }
+    // if (!typesCovered.includes('normal')) {
+    //     typesToInclude.push('fighting')
+    // }
+    typeRelations.forEach(type => {
+        // console.log(`${type.type} ${typesCovered.includes(type.type) ? '' : 'not '}covered`)
+        if (!typesCovered.includes(type.type)) {
+            typesToInclude.push(...type.weakTo)  
+        }
+    })
+    typesToInclude = typesToInclude.filter(function(item, pos) {
+        return typesToInclude.indexOf(item) == pos;
+    })
+    showTypesToInclude(typesToInclude)
+}
+
+function showTypesToInclude(typesToInclude) {
+    document.querySelectorAll('.to-include .type').forEach(typeElement => {
+        typeElement.classList.remove('active')
+    })
+    typesToInclude.forEach(type => {
+        document.querySelector(`.to-include .${type}`).classList.add('active')
+    })
 }
