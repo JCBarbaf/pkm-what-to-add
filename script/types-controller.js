@@ -1,6 +1,8 @@
 import { typeRelations } from "./type-relations.js"
 
 let typesOwned = []
+let modal = document.querySelector('.modal-background')
+
 document.querySelector('.selector').addEventListener('click', (event) => {
     let type = event.target.closest('.type')
     if (type) {
@@ -17,7 +19,6 @@ document.querySelector('.selector').addEventListener('click', (event) => {
 })
 
 document.querySelector('.reset-types.button').addEventListener('click', (event) => {
-    console.log("reset types")
     typesOwned = []
     document.querySelectorAll('.types-container.selector .type').forEach(type => {
       if (type.classList.contains('active')) {
@@ -26,6 +27,16 @@ document.querySelector('.reset-types.button').addEventListener('click', (event) 
     })
     let typesCovered = calculateTypesCovered()
     showTypesCovered(typesCovered)
+})
+
+document.querySelector('.recomend-types.button').addEventListener('click', (event) => {
+    modal.classList.add('active')
+})
+
+modal.addEventListener('click', (event) => {
+    if(!event.target.closest('.modal') || event.target.closest('.close-modal-button')) {
+        modal.classList.remove('active')
+    }
 })
 
 function calculateTypesCovered () {
