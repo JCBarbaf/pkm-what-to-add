@@ -3,6 +3,7 @@ import { typeRelations } from "./type-relations.js"
 let typesOwned = []
 let modal = document.querySelector('.modal-background')
 let filter = document.querySelector('.filter')
+let noTypesMessage = document.querySelector('.no-types')
 
 document.querySelector('.selector').addEventListener('click', (event) => {
     let type = event.target.closest('.type')
@@ -84,6 +85,9 @@ function calculateTypesToInclude() {
         if (!typesCovered.includes('normal') && !typesToInclude.includes('fighting')) {
             typesToInclude.push('fighting')
         }
+        if (!typesCovered.includes('dragon') && !typesToInclude.includes('dragon')) {
+            typesToInclude.push('dragon')
+        }
     } else {
         typesToInclude = typesToInclude.filter((item, pos) => typesToInclude.indexOf(item) == pos)
     }
@@ -91,6 +95,11 @@ function calculateTypesToInclude() {
 }
 
 function showTypesToInclude(typesToInclude) {
+    if (typesToInclude.length > 0) {
+        noTypesMessage.classList.remove('active')
+    } else {
+        noTypesMessage.classList.add('active')
+    }
     document.querySelectorAll('.to-include .type').forEach(typeElement => {
         typeElement.classList.remove('active')
     })

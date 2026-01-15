@@ -230,8 +230,16 @@ body {
     }
 }
 
+.no-types {
+    display: none;
+    padding: 1rem;
+    &.active {
+        display: block;
+    }
+}
+
 .types-container.to-include {
-    min-height: 6rem;
+    min-height: 2rem;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
