@@ -8,6 +8,7 @@
     --primary-color: rgb(238, 64, 53);
     --secondary-color: rgb(104, 104, 104);
     --bottom-color: rgb(236, 236, 236);
+    --gradient: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.2) 100%);
 }
 
 * {
@@ -45,7 +46,7 @@ body {
 /* Title */
 
 .title-container {
-    background: var(--primary-color) linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.2) 100%);
+    background: var(--primary-color) var(--gradient);
 }
 
 .title {
@@ -57,7 +58,7 @@ body {
 
 .white-part {
     height: 3vh;
-    background: var(--bottom-color) linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0,0,0,0.2) 100%);
+    background: var(--bottom-color) var(--gradient);
     border-radius: 50rem;
     transform: translateY(50%)
 }
@@ -99,7 +100,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0.25rem;
-    background: var(--button-color) linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.2) 100%);
+    background: var(--button-color) var(--gradient);
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     font: inherit;
@@ -127,7 +128,7 @@ body {
 
 .separator {
     padding: 0.3rem;
-    background: var(--bottom-color) linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0,0,0,0.2) 100%);
+    background: var(--bottom-color) var(--gradient);
     border-radius: 0.25rem;
 }
 
@@ -148,7 +149,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0.25rem 2rem;
-    background: var(--color) linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0,0,0,0.2) 100%);
+    background: var(--color) var(--gradient);
     border: 1px solid var(--border-color);
     border-radius: 100rem;
     box-shadow: 0 0.25rem 0 0 rgba(0,0,0,0.2);
@@ -181,7 +182,7 @@ body {
 .modal {
     min-width: 40rem;
     width: 50%;
-    background: var(--secondary-color) linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0,0,0,0.2) 100%);
+    background: var(--secondary-color) var(--gradient);
     border-radius: 1rem;
     box-shadow: 0rem 0.75rem 0 0 rgba(0, 0, 0, 0.2);
 }
@@ -204,6 +205,28 @@ body {
     cursor: pointer;
     &:hover {
         scale: 1.1;
+    }
+}
+
+.filter-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+}
+
+.filter {
+    --border-color: rgba(0,0,0,0.8);
+    background: var(--primary-color) var(--gradient);
+    padding: 0.25rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.5rem;
+    & option {
+        text-align: left;
+        border-radius: 1rem;
+    }
+    &:focus {
+        --border-color: var(--white);
+        outline: none;
     }
 }
 

@@ -2,6 +2,7 @@ import { typeRelations } from "./type-relations.js"
 
 let typesOwned = []
 let modal = document.querySelector('.modal-background')
+let filter = document.querySelector('.filter')
 
 document.querySelector('.selector').addEventListener('click', (event) => {
     let type = event.target.closest('.type')
@@ -34,10 +35,15 @@ document.querySelector('.recomend-types.button').addEventListener('click', (even
     modal.classList.add('active')
 })
 
+
 modal.addEventListener('click', (event) => {
     if(!event.target.closest('.modal') || event.target.closest('.close-modal-button')) {
         modal.classList.remove('active')
     }
+})
+
+filter.addEventListener('change', (event) => {
+    calculateTypesToInclude()
 })
 
 function calculateTypesCovered () {
@@ -59,24 +65,28 @@ function showTypesCovered (typesCovered) {
 }
 
 function calculateTypesToInclude() {
+    let filterValue = filter.value
+    console.log(filter)
     let typesToInclude = []
     let typesCovered = calculateTypesCovered()
     console.log(typesCovered)
-    // if (!typesCovered.includes('electric')) {
-    //     typesToInclude.push('ground')
-    // }
-    // if (!typesCovered.includes('normal')) {
-    //     typesToInclude.push('fighting')
-    // }
     typeRelations.forEach(type => {
         // console.log(`${type.type} ${typesCovered.includes(type.type) ? '' : 'not '}covered`)
         if (!typesCovered.includes(type.type)) {
             typesToInclude.push(...type.weakTo)  
         }
     })
-    typesToInclude = typesToInclude.filter(function(item, pos) {
-        return typesToInclude.indexOf(item) == pos;
-    })
+    if (filterValue == 'highly') {
+        typesToInclude = typesToInclude.filter((item, index) => typesToInclude.indexOf(item) !== index)
+        if (!typesCovered.includes('electric') && !typesToInclude.includes('ground')) {
+            typesToInclude.push('ground')
+        }
+        if (!typesCovered.includes('normal') && !typesToInclude.includes('fighting')) {
+            typesToInclude.push('fighting')
+        }
+    } else {
+        typesToInclude = typesToInclude.filter((item, pos) => typesToInclude.indexOf(item) == pos)
+    }
     showTypesToInclude(typesToInclude)
 }
 
