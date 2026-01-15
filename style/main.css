@@ -269,6 +269,7 @@ body {
 @media (max-width: 767px) {
     .type {
         width: 70%;
+        margin-bottom: 0.5rem;
     }
 
     .column-title-container {
@@ -287,5 +288,9 @@ body {
 
     .types-container.to-include {
         justify-content: space-evenly;
+    }
+
+    .to-include .type {
+        margin-bottom: 0;
     }
 }
