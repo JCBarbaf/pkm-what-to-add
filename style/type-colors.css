@@ -1,9 +1,11 @@
 .normal {
     --type-color: rgb(143, 152, 162);
+    --text-color: var(--black);
 }
 
 .fire {
     --type-color: rgb(255, 154, 57);
+    --text-color: var(--black);
 }
 
 .water {
@@ -12,14 +14,17 @@
 
 .grass {
     --type-color: rgb(26, 204, 95);
+    --text-color: var(--black);
 }
 
 .electric {
     --type-color: rgb(244, 223, 25);
+    --text-color: var(--black);
 }
 
 .ice {
     --type-color: rgb(74, 214, 196);
+    --text-color: var(--black);
 }
 
 .fighting {
@@ -44,10 +49,12 @@
 
 .bug {
     --type-color: rgb(118, 211, 44);
+    --text-color: var(--black);
 }
 
 .rock {
     --type-color: rgb(200, 189, 136);
+    --text-color: var(--black);
 }
 
 .ghost {
